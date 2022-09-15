@@ -1,13 +1,11 @@
-import { faker } from "@faker-js/faker";
+import  faker  from "faker";
 
-class User{
+class User {
   name: string;
   location: {
     lat: number;
     lng: number;
   };
 
-  constructor(){
-    
-  }
+  constructor() {}
 }
