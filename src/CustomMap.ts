@@ -1,3 +1,6 @@
+/// <reference types="@types/google.maps" />
+
+
 import {User} from './User';
 import {Driver} from './Driver';
 
@@ -14,11 +17,17 @@ export class CustomMap{
     })
   }
 
-  addUserMarker(){
-
+  addUserMarker(user: User){
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: user.location.lat,
+        lng: user.location.lng,
+      }
+    })
   }
 
-  addDriverMarker(){
+  addDriverMarker(driver: Driver){
 
   }
 }
