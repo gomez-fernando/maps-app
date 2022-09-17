@@ -6,7 +6,7 @@ export interface Mappable {
     lng: number;
   };
   markerContent(): string;
-  color: string;
+  icon: string;
 }  
 
 export class CustomMap{
@@ -14,10 +14,12 @@ export class CustomMap{
 
   constructor(divId: string){
     this.googleMap = new google.maps.Map(document.querySelector(divId) as HTMLElement, {
-      zoom: 1,
+      zoom: 6.8,
       center: {
-        lat: 0,
-        lng: 0
+        lat: 40,
+        lng: -3.70882
+        // lat: 45.74595,
+        // lng: 4.73055
       }
     })
   }
@@ -28,6 +30,11 @@ export class CustomMap{
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng,
+      },
+      icon: {
+        
+        url: mappable.icon
+        
       }
     });
 
