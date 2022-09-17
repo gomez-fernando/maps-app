@@ -4,8 +4,10 @@ import {Driver} from './Driver';
 
 const customMap = new CustomMap('#map');
 const user = new User();
+const driver = new Driver();
 
-customMap.addUserMarker(user);
+customMap.addMarker(user);
+customMap.addMarker(driver);
 
 
 

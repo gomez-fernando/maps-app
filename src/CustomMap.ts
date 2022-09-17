@@ -1,8 +1,12 @@
 /// <reference types="@types/google.maps" />
 
-
-import {User} from './User';
-import {Driver} from './Driver';
+interface Mappable {
+  location: {
+    lat: number;
+    lng: number;
+  };
+  markerContent(): string;
+}  
 
 export class CustomMap{
   private googleMap: google.maps.Map;
@@ -17,17 +21,22 @@ export class CustomMap{
     })
   }
 
-  addUserMarker(user: User){
-    new google.maps.Marker({
+  addMarker(mappable: Mappable): void{
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: user.location.lat,
-        lng: user.location.lng,
+        lat: mappable.location.lat,
+        lng: mappable.location.lng,
       }
+    });
+
+    marker.addListener('click', ()=>{
+      const infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent()
+      })
+
+      infoWindow.open(this.googleMap as google.maps.Map, marker as google.maps.Marker)
     })
   }
 
-  addDriverMarker(driver: Driver){
-
-  }
 }
