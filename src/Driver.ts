@@ -1,12 +1,14 @@
 import  faker  from "faker";
+import { Mappable } from './CustomMap';
 
-export class Driver {
+export class Driver implements Driver {
   name: string;
   lastName: string;
   location: {
     lat: number;
     lng: number;
   };
+  color: string = 'red';
 
   constructor() {
     this.name = faker.name.firstName(0);
